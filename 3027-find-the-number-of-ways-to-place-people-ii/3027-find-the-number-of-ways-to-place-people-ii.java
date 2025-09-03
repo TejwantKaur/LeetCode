@@ -19,6 +19,7 @@ class Solution {
                 if(y>bottom && y<=top){
                     res++;
                     bottom = y;
+                    if (bottom==top) break;
                 }
             }
         }
