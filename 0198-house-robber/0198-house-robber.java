@@ -9,9 +9,7 @@ class Solution {
         int prev1 = Math.max(nums[0], nums[1]);
 
         for(int i=2; i<n; i++){
-            int rob = nums[i]+prev2;
-            int skip = prev1;
-            int curr = Math.max(rob, skip);
+            int curr = Math.max(nums[i]+prev2, prev1);
 
             prev2 = prev1;
             prev1 = curr;
