@@ -2,15 +2,13 @@ class Solution {
     public int[] getNoZeroIntegers(int n) {
         int[] arr = new int[2];
 
-        int half = n/2;
-        arr[0] = half;
-        
-        if(n%2 != 0) arr[1] = half+1;
-        else arr[1]= half;
-        
-        
-
+        for(int i=0; i<n; i++){
+            int j=n-i;
+            
+            if(!String.valueOf(i).contains("0") && !String.valueOf(j).contains("0")){
+                return new int[] {i,j};
+            }
+        } 
         return arr; 
-        
     }
 }
