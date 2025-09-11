@@ -1,20 +1,20 @@
 class Solution {
     public String sortVowels(String s) {
-        Set<Character> hs = Set.of('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u');
-        List<Character> vowel = new ArrayList<>();
+        Set<Character> vowels = Set.of('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u');
+        List<Character> myvow = new ArrayList<>();
 
-        // collect vowels
+        // collect myvows
         for (char c : s.toCharArray())
-            if (hs.contains(c))
-                vowel.add(c);
+            if (vowels.contains(c))
+                myvow.add(c);
 
-        Collections.sort(vowel);
+        Collections.sort(myvow);
         StringBuilder res = new StringBuilder();
 
         int i = 0;
-        for (char c : s.toCharArray()){
-            if (hs.contains(c))
-                res.append(vowel.get(i++));
+        for (char c : s.toCharArray()) {
+            if (vowels.contains(c))
+                res.append(myvow.get(i++));
             else
                 res.append(c);
         }
