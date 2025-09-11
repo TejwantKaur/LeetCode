@@ -1,37 +1,24 @@
 class Solution {
     public String sortVowels(String s) {
-        boolean[] dp = new boolean[s.length()];
-        HashSet hs = new HashSet<>();
-        hs.add('a'); hs.add('e'); hs.add('i');hs.add('o');hs.add('u');
-        hs.add('A'); hs.add('E'); hs.add('I');hs.add('O');hs.add('U');
+        Set<Character> hs = Set.of('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u');
+        List<Character> vowel = new ArrayList<>();
 
-        String newstr = "";
-        for (int i = 0; i<s.length(); i++){
-            char ch = s.charAt(i);
-            if(hs.contains(ch)){
-                dp[i] = true;
-                newstr+=ch;
-            }
-            
-        } 
+        // collect vowels
+        for (char c : s.toCharArray())
+            if (hs.contains(c))
+                vowel.add(c);
 
-        // arrange new str
-        char[] charArray = newstr.toCharArray();
-        Arrays.sort(charArray);
-        String sortedString = new String(charArray);
+        Collections.sort(vowel);
+        StringBuilder res = new StringBuilder();
 
-        String fstr= "";
-        int j=0;
-        for(int i=0; i<s.length(); i++){
-            if (dp[i]==true) {
-                char ch = sortedString.charAt(j);
-                fstr+=ch;
-                j++;
-            } else{
-                char ch = s.charAt(i);
-                fstr+=ch;
-            }
+        int i = 0;
+        for (char c : s.toCharArray()){
+            if (hs.contains(c))
+                res.append(vowel.get(i++));
+            else
+                res.append(c);
         }
-        return fstr;
+        return res.toString();
+
     }
 }
