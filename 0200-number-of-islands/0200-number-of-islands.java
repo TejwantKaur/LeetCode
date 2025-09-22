@@ -20,12 +20,9 @@ class Solution {
         
         grid[r][c] = '0'; //visited
 
-        // 4 directions
-        int[] dr = {0,0,-1,1};
-        int[] dc = {-1,1,0,0};
-
-        for(int i=0; i<dr.length; i++){
-            dfs(grid, r+dr[i], c+dc[i]);
-        }
+        dfs(grid, r+1, c);
+        dfs(grid, r-1, c);
+        dfs(grid, r , c + 1);
+        dfs(grid, r , c - 1);
     }
 }
