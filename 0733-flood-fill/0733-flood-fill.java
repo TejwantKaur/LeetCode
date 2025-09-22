@@ -22,5 +22,5 @@ class Solution {
 
     // down
         helper(image, sr+1, sc, color, vis, stClr);
-}
+    }
 }
