@@ -4,7 +4,7 @@ class Solution {
         if (n==1 && nums[0] == target) return 0;
         
         int st=0; int end=n-1;
-        while(st<end){
+        while(st<=end){
             int mid = st+(end-st)/2;
 
             if(nums[mid]==target)
