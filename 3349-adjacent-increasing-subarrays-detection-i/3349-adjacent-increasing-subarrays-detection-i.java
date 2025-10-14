@@ -15,7 +15,7 @@ class Solution {
         }
 
         // chk for 2 adjacent
-        for(int i=k-1; i+k<n; i++){ //i= 3-1=2, 2+3<n
+        for(int i=k-1; i<n-k; i++){ //i= 3-1=2, 2+3<n
             if(streak[i]>=k && streak[i+k]>=k)
                 return true;
         }
