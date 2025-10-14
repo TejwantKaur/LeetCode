@@ -1,35 +1,32 @@
 class Solution {
-    static class Pair implements Comparable<Pair>{
-        int val; int idx;
-        public Pair(int val, int idx){
-            this.val = val; 
-            this.idx=idx;
-        }
-        @Override
-        public int compareTo(Pair p2){
-            // descending
-            return p2.val-this.val;
-        }
-    }
     public int[] maxSlidingWindow(int[] nums, int k) {
-        int n= nums.length;
-        int res[] = new int[n-k+1]; // window elem size
-        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        int n = nums.length;
+        Deque<Integer> dq = new LinkedList<>();
+        int[] res = new int[n-k+1];
 
-        // Ist window;
+        // 1st window
         for(int i=0; i<k; i++){
-            pq.add(new Pair(nums[i], i));
+            while(!dq.isEmpty() && nums[dq.peekLast()]<=nums[i]){
+                dq.removeLast();
+             }   
+            dq.addLast(i);
         }
-        res[0] = pq.peek().val;
+        int idx=0;
+        for(int i=k; i<n; i++){
+            res[idx++] = (nums[dq.peekFirst()]);
 
-        for(int i=k; i<nums.length; i++){
-            while(pq.size()>0 && pq.peek().idx<=(i-k)){
-                pq.remove();
+            // remove elems not in curr window  (i-k+1) starting index
+            while(!dq.isEmpty() && dq.peekFirst() <= i-k){
+                dq.removeFirst();
             }
-            pq.add(new Pair(nums[i], i));
-            res[i-k+1] = pq.peek().val;
+
+            // remove smaller elems
+            while(!dq.isEmpty() && nums[dq.peekLast()]<=nums[i])
+                dq.removeLast();
+            dq.addLast(i);
         }
+        // push remaining last element, o last wli window da maximum hoega 
+        res[idx] = (nums[dq.peekFirst()]);
         return res;
-        
     }
 }
