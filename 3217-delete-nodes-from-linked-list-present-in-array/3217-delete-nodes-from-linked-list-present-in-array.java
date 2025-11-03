@@ -1,27 +1,21 @@
 class Solution {
-     public ListNode modifiedList(int[] nums, ListNode head) {
-        // Convert nums into a HashSet for fast lookups
-        Set<Integer> set = new HashSet<>();
-        for (int n : nums) {
-            set.add(n);
+    public ListNode modifiedList(int[] nums, ListNode head) {
+        HashSet<Integer> hs = new HashSet<>();
+
+        for(int n:nums)
+            hs.add(n);
+
+        ListNode temp = new ListNode(0);
+        temp.next = head;
+
+        ListNode curr = temp;
+        while(curr.next!=null){
+            if(hs.contains(curr.next.val))
+                curr.next=curr.next.next;
+            else
+                curr = curr.next;
         }
 
-        // Dummy node before the head
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-
-        ListNode current = dummy;
-
-        while (current.next != null) {
-            if (set.contains(current.next.val)) {
-                // Skip the node to remove it
-                current.next = current.next.next;
-            } else {
-                // Move to the next node
-                current = current.next;
-            }
-        }
-
-        return dummy.next; // Return new head
+        return temp.next; 
     }
 }
