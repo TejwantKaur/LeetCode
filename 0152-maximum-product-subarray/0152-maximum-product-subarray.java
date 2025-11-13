@@ -15,7 +15,7 @@ class Solution {
             }
 
             currMax = Math.max(num, currMax*num);
-            currMin = Math.max(num, currMin*num);
+            currMin = Math.min(num, currMin*num);
 
             max = Math.max(max,currMax);
         }
