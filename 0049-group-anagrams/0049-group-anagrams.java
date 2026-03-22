@@ -8,14 +8,15 @@ class Solution {
     for(char c: s.toCharArray()){
       freq[c-'a']++;
     }
-    StringBuilder sb = new StringBuilder();
-    char c='a';
-    for(int i:freq){
-      sb.append(c);
-      sb.append(i);
-    }
-    return sb.toString();
-    // String ret = Arrays.toString(fre);
+
+    // StringBuilder sb = new StringBuilder();
+    // char c='a';
+    // for(int i:freq){
+    //   sb.append(c);
+    //   sb.append(i);
+    // }
+    // return sb.toString();
+    return Arrays.toString(freq);
     // return ret;
   }
 
