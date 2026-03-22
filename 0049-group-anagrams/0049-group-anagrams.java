@@ -24,14 +24,15 @@ class Solution {
     for (String str:strs){
       String strComp = string_compression(str);
       // compressed string, original
-      if(map.containsKey(strComp)) {
-        map.get(strComp).add(str);
-      }
-      else {
-        List<String> list = new ArrayList<>();
-        list.add(str);
-        map.put(strComp,list);
-      }
+      // if(map.containsKey(strComp)) {
+      //   map.get(strComp).add(str);
+      // }
+      // else {
+      //   List<String> list = new ArrayList<>();
+      //   list.add(str);
+      //   map.put(strComp,list);
+      // }
+      map.computeIfAbsent(strComp, k -> new ArrayList<>()).add(str);
     }
     return new ArrayList<>(map.values());      
   }
