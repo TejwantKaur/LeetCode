@@ -4,12 +4,19 @@ class Solution {
     // for(char c: s.toCharArray()){
     //   hm.put(c,hm.getOrDefault(c,0)+1);
     // }
-    int fre[] = new int[26];
+    int freq[] = new int[26];
     for(char c: s.toCharArray()){
-      fre[c-'a']++;
+      freq[c-'a']++;
     }
-    String ret = Arrays.toString(fre);
-    return ret;
+    StringBuilder sb = new StringBuilder();
+    char c='a';
+    for(int i:freq){
+      sb.append(c);
+      sb.append(i);
+    }
+    return sb.toString();
+    // String ret = Arrays.toString(fre);
+    // return ret;
   }
 
   public List<List<String>> groupAnagrams(String[] strs) {
