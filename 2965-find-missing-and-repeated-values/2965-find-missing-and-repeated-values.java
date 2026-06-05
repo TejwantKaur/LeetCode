@@ -1,23 +1,23 @@
 class Solution {
     public int[] findMissingAndRepeatedValues(int[][] grid) {
-        int n = grid.length;
+      HashSet<Integer> hs = new HashSet<>();
+      int n = grid.length;
+      int n2 = n*n;
+      int totalSum = n2*(n2+1)/2;
 
-        boolean arr[] = new boolean[(n*n) + 1];
-        int rep = -1; int miss = -1; 
-        for(int[] row: grid){
-            for(int r: row){
-                if(arr[r] == false)
-                    arr[r] = true;
-                else 
-                    rep = r;
-            }
+      int rep=0; int sum=0;
+      for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+          if(hs.contains(grid[i][j])){
+             rep = grid[i][j];
+             sum -= grid[i][j];
+          }
+          hs.add(grid[i][j]);
+          sum += grid[i][j];
         }
-        for(int i=1; i<arr.length; i++){
-            if(arr[i]==false){
-                miss = i;
-                break;
-            }
-        }
-        return new int[] {rep, miss};
+      }
+
+      int miss = totalSum-sum;
+      return new int[] {rep,miss};
     }
 }
