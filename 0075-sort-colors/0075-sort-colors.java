@@ -9,17 +9,16 @@ class Solution {
       int mid = 0;
       int r = nums.length-1;
       while(mid <= r){
-        if(nums[mid] == 0){
+        while(mid<=r && nums[mid] == 0){
           swap(nums, l,mid);
           l++; 
           mid++;
         } 
 
-        else if(nums[mid] == 1) 
+        while(mid<=r && nums[mid] == 1) 
           mid++;
 
-        // else (nums[mid] == 2) {
-        else{
+        while(mid<=r && nums[mid] == 2) {
           swap(nums, mid, r);
           r--; 
         }
