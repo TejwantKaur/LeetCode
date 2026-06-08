@@ -14,9 +14,9 @@ class Solution {
         // even both sides
         if(mid%2 == 0) {
           if(nums[mid]==nums[mid-1])
-            end = mid-1;
+            end = mid-2;
           else 
-            l = mid+1;
+            l = mid+2;
         }
         // odd
         else {
