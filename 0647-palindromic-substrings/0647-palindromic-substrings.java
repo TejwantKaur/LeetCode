@@ -3,16 +3,19 @@ class Solution {
       if(i>=j) return true;
       if(s.charAt(i) != s.charAt(j)) return false;
 
-      return rec(s, ++i, --j); 
+      return rec(s, i+1, j-1); 
     }
 
     public boolean memo(String s, int i, int j, int dp[][]){
       if(i>=j) return true;
+      if(s.charAt(i) != s.charAt(j)) return false;
+      
       if(dp[i][j] != 0) 
         return dp[i][j] == 1;
         // return dp[i][j] == 1? true: if -1 false;
 
-      dp[i][j] = memo(s, ++i, --j, dp)? 1: -1;
+      // 0 prefilled, 1 yes palin, -1 no palin
+      dp[i][j] = memo(s, i+1, j-1, dp)? 1: -1;
       return dp[i][j] == 1;
     }
 
@@ -20,10 +23,10 @@ class Solution {
       int n=s.length();
       int cnt=0;
 
-      int[][]dp = new int[n+1][n+1];
+      int[][]dp = new int[n][n];
       for(int i=0; i<n; i++){
         for(int j=i; j<n; j++){
-          if (rec(s, i, j)) cnt++;
+          if (memo(s, i, j, dp)) cnt++;
         }
       }
       return cnt;
