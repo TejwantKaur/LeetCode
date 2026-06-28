@@ -15,16 +15,24 @@ class Solution {
             greatest--;
 
           swap(nums, i-1, greatest);
-          Arrays.sort(nums,i,n);
+          // Arrays.sort(nums,i,n);
+          reverse(nums,i,n-1);
           return;
         }
       }
       // if descending
       // nums = [3,2,1];
-      Arrays.sort(nums);
+      // Arrays.sort(nums);
+      reverse(nums,0,n-1);
       return;
     }
 
+    static void reverse(int[]nums, int i, int j){
+      while(i<j){
+        swap(nums,i,j);
+        i++; j--;
+      }
+    }
     public void nextPermutation(int[] nums) {
       perm(nums);
     }
